@@ -22,10 +22,6 @@ open class NetworkService {
         public static let unknown = NSError(domain: errorDomain,
                                             code: 0,
                                             userInfo: [NSLocalizedDescriptionKey: "Response did not contain any data"])
-        
-        public static let jsonConversion = NSError(domain: errorDomain,
-                                                   code: 1,
-                                                   userInfo: [NSLocalizedDescriptionKey: "Could not convert response data to JSON"])
     }
     
     public private(set) var session: NetworkSessionProtocol

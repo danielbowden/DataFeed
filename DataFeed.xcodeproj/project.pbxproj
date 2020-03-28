@@ -14,6 +14,13 @@
 		B5632372242ED5CE00EDF7B9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5632371242ED5CE00EDF7B9 /* NetworkService.swift */; };
 		B5632376242EE26700EDF7B9 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5632375242EE26700EDF7B9 /* NetworkServiceTests.swift */; };
 		B5632378242F08D100EDF7B9 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5632377242F08D100EDF7B9 /* NetworkServiceMock.swift */; };
+		B563237A242F27E500EDF7B9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5632379242F27E500EDF7B9 /* Item.swift */; };
+		B563237C242F27FE00EDF7B9 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563237B242F27FE00EDF7B9 /* Topic.swift */; };
+		B563237F242F2B9300EDF7B9 /* DataFeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563237E242F2B9300EDF7B9 /* DataFeedManager.swift */; };
+		B5632382242F2EF400EDF7B9 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5632381242F2EF400EDF7B9 /* Config.swift */; };
+		B5632384242F34C700EDF7B9 /* DataFeedManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5632383242F34C700EDF7B9 /* DataFeedManagerTests.swift */; };
+		B56323A1242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56323A0242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift */; };
+		B56323A2242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56323A0242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +45,13 @@
 		B5632371242ED5CE00EDF7B9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B5632375242EE26700EDF7B9 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		B5632377242F08D100EDF7B9 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		B5632379242F27E500EDF7B9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B563237B242F27FE00EDF7B9 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		B563237E242F2B9300EDF7B9 /* DataFeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFeedManager.swift; sourceTree = "<group>"; };
+		B5632380242F2DAF00EDF7B9 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		B5632381242F2EF400EDF7B9 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B5632383242F34C700EDF7B9 /* DataFeedManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFeedManagerTests.swift; sourceTree = "<group>"; };
+		B56323A0242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnkeyedDecodingContainer+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +95,12 @@
 		B5632346242EC21900EDF7B9 /* DataFeed */ = {
 			isa = PBXGroup;
 			children = (
+				B563237D242F2B7B00EDF7B9 /* Managers */,
 				B563236A242ECC7300EDF7B9 /* Models */,
 				B563236E242ECD0700EDF7B9 /* Resources */,
 				B5632370242ED4E000EDF7B9 /* Services */,
 				B563236F242ECD3100EDF7B9 /* SupportingFiles */,
+				B563239F242F7F9200EDF7B9 /* Utilities */,
 				B5632369242ECC6700EDF7B9 /* ViewControllers */,
 				B563236B242ECC7F00EDF7B9 /* Views */,
 			);
@@ -97,6 +113,7 @@
 				B5632360242EC21F00EDF7B9 /* Info.plist */,
 				B5632375242EE26700EDF7B9 /* NetworkServiceTests.swift */,
 				B5632377242F08D100EDF7B9 /* NetworkServiceMock.swift */,
+				B5632383242F34C700EDF7B9 /* DataFeedManagerTests.swift */,
 			);
 			path = DataFeedTests;
 			sourceTree = "<group>";
@@ -112,6 +129,8 @@
 		B563236A242ECC7300EDF7B9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5632379242F27E500EDF7B9 /* Item.swift */,
+				B563237B242F27FE00EDF7B9 /* Topic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				B5632355242EC21E00EDF7B9 /* Info.plist */,
+				B5632380242F2DAF00EDF7B9 /* Config.xcconfig */,
+				B5632381242F2EF400EDF7B9 /* Config.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -145,6 +166,22 @@
 				B5632371242ED5CE00EDF7B9 /* NetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B563237D242F2B7B00EDF7B9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B563237E242F2B9300EDF7B9 /* DataFeedManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		B563239F242F7F9200EDF7B9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B56323A0242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +284,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56323A1242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift in Sources */,
+				B563237A242F27E500EDF7B9 /* Item.swift in Sources */,
+				B563237F242F2B9300EDF7B9 /* DataFeedManager.swift in Sources */,
+				B563237C242F27FE00EDF7B9 /* Topic.swift in Sources */,
+				B5632382242F2EF400EDF7B9 /* Config.swift in Sources */,
 				B563236D242ECCC100EDF7B9 /* DataFeedViewController.swift in Sources */,
 				B5632372242ED5CE00EDF7B9 /* NetworkService.swift in Sources */,
 				B5632348242EC21900EDF7B9 /* AppDelegate.swift in Sources */,
@@ -257,8 +299,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56323A2242F801C00EDF7B9 /* UnkeyedDecodingContainer+Extension.swift in Sources */,
 				B5632376242EE26700EDF7B9 /* NetworkServiceTests.swift in Sources */,
 				B5632378242F08D100EDF7B9 /* NetworkServiceMock.swift in Sources */,
+				B5632384242F34C700EDF7B9 /* DataFeedManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +330,7 @@
 /* Begin XCBuildConfiguration section */
 		B5632361242EC21F00EDF7B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5632380242F2DAF00EDF7B9 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -334,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,6 +391,7 @@
 		};
 		B5632362242EC21F00EDF7B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5632380242F2DAF00EDF7B9 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -388,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

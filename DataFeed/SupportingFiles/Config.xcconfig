@@ -1,0 +1,10 @@
+//
+//  Config.xcconfig
+//  DataFeed
+//
+//  Created by Daniel Bowden on 28/3/20.
+//  Copyright © 2020 Daniel Bowden. All rights reserved.
+//
+
+API_BASE_URL = dl.dropboxusercontent.com
+FACTS_ENDPOINT = /s/72ms4et62n83nmi/facts.json

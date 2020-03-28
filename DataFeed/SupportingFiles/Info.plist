@@ -39,5 +39,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>DF_FACTS_ENDPOINT</key>
+	<string>https://${API_BASE_URL}${FACTS_ENDPOINT}</string>
 </dict>
 </plist>
