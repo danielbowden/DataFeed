@@ -60,10 +60,6 @@ class DataFeedViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - UITableViewDelegate & UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfItems ?? 0
     }
@@ -94,20 +90,32 @@ class DataFeedViewController: UIViewController, UITableViewDelegate, UITableView
     
     @objc private func loadDataFeed() {
         activityIndicator.startAnimating()
-        DataFeedManager().retrieveDataFeed { [weak self] result in
+        manager.retrieveDataFeed { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
+                self.tableView.beginUpdates()
                 self.refreshControl.endRefreshing()
+                self.tableView.endUpdates()
                 switch result {
                 case .success(let topic):
-                    print("got topic: \(topic)")
                     self.viewModel = TopicViewModel(with: topic)
                 case .failure(let error):
-                    print("got error: \(error.localizedDescription)")
-                    //TODO: Show error state
+                    self.showNetworkErrorAlert(withError: error)
                 }
             }
         }
+    }
+    
+    private func showNetworkErrorAlert(withError error: NSError) {
+        let alert = UIAlertController(title: "Data Feed Error", message: error.localizedDescription, preferredStyle: .alert)
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.loadDataFeed()
+        }
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
+        alert.addAction(retryAction)
+        alert.addAction(dismissAction)
+        present(alert, animated: true)
     }
 }
