@@ -39,7 +39,7 @@ class DataFeedManager {
         
         networkService.startDataTask(withRequest: request) { result in
             switch result {
-            case .success(_, let data):
+            case .success((_, let data)):
                 guard let topic = try? JSONDecoder().decode(Topic.self, from: data) else {
                     completion(.failure(Errors.malformedResponse))
                     return

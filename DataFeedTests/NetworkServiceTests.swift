@@ -44,7 +44,7 @@ class NetworkServiceTests: XCTestCase {
         
         networkService.startDataTask(withRequest: request) { result in
             switch result {
-            case .success(let response, let data):
+            case .success((let response, let data)):
                 XCTAssertNotNil(data)
                 XCTAssertEqual(String(data: data, encoding: .utf8)!, "{\"test\":\"data\"}")
                 XCTAssertEqual((response as! HTTPURLResponse).statusCode, 200)
@@ -78,7 +78,7 @@ class NetworkServiceTests: XCTestCase {
         mockSession.urlResponse = httpResponse404
         networkService.startDataTask(withRequest: request) { result in
             switch result {
-            case .success(_, _):
+            case .success(_):
                 XCTFail("Request should not succeed")
             case .failure(let error):
                 XCTAssertEqual(error.code, 404)
