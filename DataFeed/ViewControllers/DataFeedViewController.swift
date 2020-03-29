@@ -29,12 +29,18 @@ class DataFeedViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
+        // Dark mode support
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
         tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
-        refreshControl.tintColor = .blue
+        refreshControl.tintColor = .gray
         refreshControl.addTarget(self, action: #selector(loadDataFeed), for: .valueChanged)
         activityIndicator.hidesWhenStopped = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
