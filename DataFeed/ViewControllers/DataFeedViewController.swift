@@ -10,7 +10,13 @@ import UIKit
 
 class DataFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let tableView = UITableView()
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50.0
+        tableView.separatorInset = UIEdgeInsets(top: 0.0, left: 8.0, bottom: 0.0, right: 0.0)
+        return tableView
+    }()
     private let activityIndicator = UIActivityIndicatorView(style: .gray)
     private let refreshControl = UIRefreshControl()
     private lazy var manager = DataFeedManager()
@@ -24,16 +30,14 @@ class DataFeedViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        activityIndicator.hidesWhenStopped = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
-     
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Identifier")
+        tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-        
-        refreshControl.tintColor = .blue
         tableView.refreshControl = refreshControl
+        refreshControl.tintColor = .blue
         refreshControl.addTarget(self, action: #selector(loadDataFeed), for: .valueChanged)
+        activityIndicator.hidesWhenStopped = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,10 +69,13 @@ class DataFeedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let item = viewModel?.item(at: indexPath.row) else { return UITableViewCell() }
+        guard let item = viewModel?.item(at: indexPath.row),
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.cellIdentifier, for: indexPath) as? ItemTableViewCell else {
+                return UITableViewCell()
+        }
+        
         let itemViewModel = ItemViewModel(with: item)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Identifier", for: indexPath)
-        cell.textLabel?.text = itemViewModel.title
+        cell.configure(viewModel: itemViewModel)
         
         return cell
     }

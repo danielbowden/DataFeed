@@ -25,6 +25,7 @@
 		B56323AB2430119000EDF7B9 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56323AA2430119000EDF7B9 /* ItemViewModel.swift */; };
 		B56323AE243018EA00EDF7B9 /* TopicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56323AD243018EA00EDF7B9 /* TopicViewModelTests.swift */; };
 		B56323B02430208C00EDF7B9 /* ItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56323AF2430208C00EDF7B9 /* ItemViewModelTests.swift */; };
+		B56323B22430271200EDF7B9 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56323B12430271200EDF7B9 /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B56323AA2430119000EDF7B9 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		B56323AD243018EA00EDF7B9 /* TopicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewModelTests.swift; sourceTree = "<group>"; };
 		B56323AF2430208C00EDF7B9 /* ItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelTests.swift; sourceTree = "<group>"; };
+		B56323B12430271200EDF7B9 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		B563236B242ECC7F00EDF7B9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B56323B12430271200EDF7B9 /* ItemTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				B5632382242F2EF400EDF7B9 /* Config.swift in Sources */,
 				B563236D242ECCC100EDF7B9 /* DataFeedViewController.swift in Sources */,
 				B5632372242ED5CE00EDF7B9 /* NetworkService.swift in Sources */,
+				B56323B22430271200EDF7B9 /* ItemTableViewCell.swift in Sources */,
 				B5632348242EC21900EDF7B9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
