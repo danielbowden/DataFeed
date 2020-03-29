@@ -34,14 +34,27 @@ class ItemTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = ItemViewModel.placeholderImage
+        imageView.layer.cornerRadius = Constants.margin / 2.0
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private let stackView: UIStackView = {
+    private let labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .fill
+        stackView.alignment = .leading
         stackView.distribution = .fill
+        stackView.spacing = Constants.margin
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let parentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .top
+        stackView.distribution = .fillProportionally
         stackView.spacing = Constants.margin
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -50,6 +63,7 @@ class ItemTableViewCell: UITableViewCell {
     private struct Constants {
         static let margin = CGFloat(8.0)
         static let defaultLabelHeight = CGFloat(20.0)
+        static let imageSize = CGSize(width: 60.0, height: 60.0)
     }
     
     private var viewModel: ItemViewModel? {
@@ -61,21 +75,28 @@ class ItemTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        // Cell layout consists of a horizontal stackview containing both the image and another
+        // vertical stackview containing the labels
+        labelStackView.addArrangedSubview(titleLabel)
+        labelStackView.addArrangedSubview(subtitleLabel)
+        parentStackView.addArrangedSubview(iconImageView)
+        parentStackView.addArrangedSubview(labelStackView)
+        contentView.addSubview(parentStackView)
         contentView.autoresizingMask = .flexibleHeight
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(subtitleLabel)
-        contentView.addSubview(stackView)
         
         // lower the priority of the stackview's bottom constraint
-        let bottomConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.margin)
+        let bottomConstraint = parentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.margin)
         bottomConstraint.priority = UILayoutPriority(rawValue: 999)
         
+        // Pin the outer stackview to the cell's content view with a margin around the outside
         NSLayoutConstraint.activate([
             titleLabel.heightAnchor.constraint(equalToConstant: Constants.defaultLabelHeight),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.margin),
-            bottomConstraint,
-            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.margin),
-            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.margin)
+            parentStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: Constants.imageSize.height),
+            iconImageView.widthAnchor.constraint(equalToConstant: Constants.imageSize.width),
+            parentStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.margin),
+            parentStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.margin),
+            bottomConstraint
         ])
         
         selectionStyle = .none
