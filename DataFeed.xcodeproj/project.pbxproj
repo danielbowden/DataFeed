@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B55A743F24307C4500273456 /* TestImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B55A743E24307C4500273456 /* TestImage.png */; };
 		B5632348242EC21900EDF7B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5632347242EC21900EDF7B9 /* AppDelegate.swift */; };
 		B5632351242EC21E00EDF7B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5632350242EC21E00EDF7B9 /* Assets.xcassets */; };
 		B5632354242EC21E00EDF7B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5632352242EC21E00EDF7B9 /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B55A743E24307C4500273456 /* TestImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestImage.png; sourceTree = "<group>"; };
 		B5632344242EC21900EDF7B9 /* DataFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5632347242EC21900EDF7B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5632350242EC21E00EDF7B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				B5632360242EC21F00EDF7B9 /* Info.plist */,
+				B55A743E24307C4500273456 /* TestImage.png */,
 				B5632375242EE26700EDF7B9 /* NetworkServiceTests.swift */,
 				B5632377242F08D100EDF7B9 /* NetworkServiceMock.swift */,
 				B5632383242F34C700EDF7B9 /* DataFeedManagerTests.swift */,
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55A743F24307C4500273456 /* TestImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,6 +34,7 @@ class ItemTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = ItemViewModel.placeholderImage
+        imageView.backgroundColor = .clear
         imageView.layer.cornerRadius = Constants.margin / 2.0
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +64,7 @@ class ItemTableViewCell: UITableViewCell {
     private struct Constants {
         static let margin = CGFloat(8.0)
         static let defaultLabelHeight = CGFloat(20.0)
-        static let imageSize = CGSize(width: 60.0, height: 60.0)
+        static let imageSize = CGSize(width: 90.0, height: 90.0)
     }
     
     private var viewModel: ItemViewModel? {
@@ -113,5 +114,10 @@ class ItemTableViewCell: UITableViewCell {
     private func updateUI() {
         titleLabel.text = viewModel?.title
         subtitleLabel.text = viewModel?.subtitle
+        if let url = viewModel?.imageUrl {
+            iconImageView.image(fromUrl: url, placeholderImage: ItemViewModel.placeholderImage)
+        } else {
+            iconImageView.image = ItemViewModel.placeholderImage
+        }
     }
 }

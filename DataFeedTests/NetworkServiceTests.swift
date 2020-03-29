@@ -125,5 +125,64 @@ class NetworkServiceTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
+    
+    func testImageDownloadNetworkRequestCanReturnUIImage() {
+        let expectation = XCTestExpectation()
+        let path = Bundle(for: NetworkServiceTests.self).path(forResource: "TestImage", ofType: "png")!
+        let imageData = try! Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+        mockSession.data = imageData
+        mockSession.urlResponse = httpResponse200
+        
+        networkService.startImageDownload(withUrl: URL(fileURLWithPath: "test")) { result in
+            switch result {
+            case .success(let image):
+                XCTAssertNotNil(image)
+                XCTAssertTrue(image.isKind(of: UIImage.self))
+                expectation.fulfill()
+            case .failure(_):
+                XCTFail("Request should not fail")
+            }
+        }
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testImageDownloadNetworkRequestReturnsFailureForBadImageData() {
+        let expectation = XCTestExpectation()
+        mockSession.data = """
+        {"data":"not an image"
+        """.data(using: .utf8)!
+        mockSession.urlResponse = httpResponse200
+        
+        networkService.startImageDownload(withUrl: URL(fileURLWithPath: "test")) { result in
+            switch result {
+            case .success(_):
+                XCTFail("Request should fail")
+            case .failure(let error):
+                XCTAssertEqual(error.domain, "DataFeed")
+                XCTAssertEqual(error.code, 1)
+                XCTAssertEqual(error.localizedDescription, "Could not create image from reponse data")
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testImageDownloadNetworkRequestReturnsFailureForBadResponse() {
+        let expectation = XCTestExpectation()
+        mockSession.data = """
+        {"error":"image not found"
+        """.data(using: .utf8)!
+        mockSession.urlResponse = httpResponse404
+        
+        networkService.startImageDownload(withUrl: URL(fileURLWithPath: "test")) { result in
+            switch result {
+            case .success(_):
+                XCTFail("Request should fail")
+            case .failure(_):
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 1.0)
+    }
 
 }
